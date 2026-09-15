@@ -1,0 +1,46 @@
+{
+  "name": "bloub-react",
+  "version": "0.1.0",
+  "description": "React port of bloub: the x.ai bot avatar as one morphing SVG shape, driven by a pure function of time.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comedianhhh/bloub-react.git"
+  },
+  "keywords": ["svg", "animation", "avatar", "react", "morphing", "bloub", "grok"],
+  "packageManager": "pnpm@9.15.0",
+  "files": ["dist", "LICENSE", "LICENSE.bloub", "README.md"],
+  "main": "./dist/bloub-react.js",
+  "module": "./dist/bloub-react.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/bloub-react.js"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.3.0",
+    "vite-plugin-dts": "^4.5.0",
+    "vitest": "^3.2.0"
+  }
+}
