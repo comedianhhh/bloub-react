@@ -43,3 +43,10 @@ describe('stateForActivity', () => {
     expect(stateForActivity('needs-input')).toBe('notify')
   })
 })
+
+describe('raw hex colours', () => {
+  it('uses a hex colour verbatim', () => {
+    const html = renderToStaticMarkup(<BloubBot color="#8B5CF6" frozenAt={0} />)
+    expect(html).toContain('fill="#8B5CF6"')
+  })
+})

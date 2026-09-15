@@ -27,7 +27,7 @@ export interface BloubBotProps {
   state?: StateId
   /** Body shape id from the customiser (`cercle`, `galet`, `squircle`, ...). */
   shape?: string
-  /** Ink colour id from the customiser (`encre`, `bleu`, `rose`, ...). */
+  /** Ink colour: a customiser id (`encre`, `bleu`, `rose`, ...) or any CSS hex like `#8B5CF6`. */
   color?: string
   /** Rest expression id (`neutre`, `heureux`, `curieux`, ...). Only visible on `idle`. */
   expression?: string
@@ -60,6 +60,12 @@ export interface BloubBotProps {
 
 const R = RAYON
 const VB = DEMI_VIEWBOX
+
+/** A palette id, or a raw hex colour passed straight through. */
+export function inkFor(color: string): string {
+  if (/^#[0-9a-fA-F]{6}$/.test(color)) return color
+  return COLOR_BY_ID.get(color)?.hex ?? '#0a0a0c'
+}
 /** Short catch-up so a gaze script owns the eyes from its first frame (never zero: NaN). */
 const SCRIPT_MORPH = 1 / 60
 
@@ -83,7 +89,7 @@ export function BloubBot({
   const uid = useId().replace(/[^a-zA-Z0-9_-]/g, '')
   const maskId = `bloub-mask-${uid}`
   const shapeRadii = SHAPE_BY_ID.get(shape)?.radii ?? null
-  const ink = COLOR_BY_ID.get(color)?.hex ?? '#0a0a0c'
+  const ink = inkFor(color)
   const expressionDef = EXPRESSION_BY_ID.get(expression) ?? null
   const frozen = frozenAt !== undefined
   const montage = cycle !== undefined
