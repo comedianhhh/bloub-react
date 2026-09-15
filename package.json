@@ -8,9 +8,22 @@
     "type": "git",
     "url": "git+https://github.com/comedianhhh/bloub-react.git"
   },
-  "keywords": ["svg", "animation", "avatar", "react", "morphing", "bloub", "grok"],
+  "keywords": [
+    "svg",
+    "animation",
+    "avatar",
+    "react",
+    "morphing",
+    "bloub",
+    "grok"
+  ],
   "packageManager": "pnpm@9.15.0",
-  "files": ["dist", "LICENSE", "LICENSE.bloub", "README.md"],
+  "files": [
+    "dist",
+    "LICENSE",
+    "LICENSE.bloub",
+    "README.md"
+  ],
   "main": "./dist/bloub-react.js",
   "module": "./dist/bloub-react.js",
   "types": "./dist/index.d.ts",
@@ -33,9 +46,11 @@
     "react-dom": ">=18"
   },
   "devDependencies": {
+    "@types/node": "^22",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^4.4.0",
+    "happy-dom": "^17",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "typescript": "^5.9.3",
