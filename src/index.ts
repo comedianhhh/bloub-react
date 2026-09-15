@@ -1,5 +1,5 @@
 export { BloubBot, type BloubBotProps, inkFor } from './BloubBot'
-export { type BotActivity, stateForActivity } from './activity'
+export { type BotActivity, cycleForActivity, stateForActivity } from './activity'
 
 export { BotEngine, type BotFrame, type Look, type RenderedEye } from './bot/engine'
 export {

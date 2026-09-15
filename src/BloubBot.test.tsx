@@ -4,7 +4,7 @@ import { BloubBot } from './BloubBot'
 import { BotEngine } from './bot/engine'
 import { RAYON } from './bot/repere'
 import { SEQUENCE } from './bot/states'
-import { stateForActivity } from './activity'
+import { cycleForActivity, stateForActivity } from './activity'
 
 // `frozenAt` renders one exact frame with no animation loop, so the component
 // can be checked without a DOM: the markup must carry the same body path the
@@ -48,5 +48,15 @@ describe('raw hex colours', () => {
   it('uses a hex colour verbatim', () => {
     const html = renderToStaticMarkup(<BloubBot color="#8B5CF6" frozenAt={0} />)
     expect(html).toContain('fill="#8B5CF6"')
+  })
+})
+
+describe('cycleForActivity', () => {
+  it('only working needs a montage; it opens on orbit and loops', () => {
+    const cycle = stateForActivity('working') === 'orbit' ? cycleForActivity('working') : undefined
+    expect(cycle?.[0]?.state).toBe('orbit')
+    expect(cycle!.length).toBeGreaterThan(1)
+    expect(cycleForActivity('thinking')).toBeUndefined()
+    expect(cycleForActivity('needs-input')).toBeUndefined()
   })
 })
